@@ -29,6 +29,9 @@
                         <x-nav-link :href="route('disposisi.index')" :active="request()->routeIs('disposisi.*')">
                             Disposisi
                         </x-nav-link>
+                        <x-nav-link :href="route('agenda.index')" :active="request()->routeIs('agenda.*')">
+                            Agenda
+                        </x-nav-link>
                     @endif
 
                     @if(auth()->user()->isKetuaTim())
@@ -38,8 +41,11 @@
                     @endif
 
                     @if(auth()->user()->isPimpinan())
-                        <x-nav-link :href="route('monitor.index')" :active="request()->routeIs('monitor.*')">
+                        <x-nav-link :href="route('monitor.index')" :active="request()->routeIs('monitor.index')">
                             Monitor Disposisi
+                        </x-nav-link>
+                        <x-nav-link :href="route('monitor.agenda')" :active="request()->routeIs('monitor.agenda')">
+                            Monitor Agenda
                         </x-nav-link>
                     @endif
                 </div>
@@ -140,8 +146,11 @@
             @endif
 
             @if(auth()->user()->isPimpinan())
-                <x-responsive-nav-link :href="route('monitor.index')" :active="request()->routeIs('monitor.*')">
+                <x-responsive-nav-link :href="route('monitor.index')" :active="request()->routeIs('monitor.index')">
                     Monitor Disposisi
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('monitor.agenda')" :active="request()->routeIs('monitor.agenda')">
+                    Monitor Agenda
                 </x-responsive-nav-link>
             @endif
         </div>

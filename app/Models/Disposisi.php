@@ -11,7 +11,8 @@ class Disposisi extends Model
         'nomor_surat', 'tanggal_surat', 'asal_surat', 'tujuan_surat', 'perihal',
         'lampiran', 'jumlah_lembar', 'klasifikasi', 'retensi', 'attachment',
         'diketahui', 'ditindaklanjuti', 'jadwalkan_hadir',
-        'catatan', 'status_disposisi', 'tanggal_disposisi', 'created_by'
+        'catatan', 'status_disposisi', 'tanggal_disposisi', 'created_by',
+        'bukti_disposisi'
     ];
 
     protected $casts = [

@@ -65,5 +65,10 @@ class DatabaseSeeder extends Seeder
             'role' => 'ketua_tim',
             'team_id' => 2,
         ]);
+
+        $this->call([
+            AgendaSeeder::class,
+            DisposisiSeeder::class,
+        ]);
     }
 }

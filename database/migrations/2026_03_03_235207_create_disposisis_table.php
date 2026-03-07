@@ -27,6 +27,7 @@ return new class extends Migration
             // Detail
             $table->text('lampiran')->nullable();
             $table->integer('jumlah_lembar')->default(1);
+            $table->integer('status_disposisi');
             $table->string('klasifikasi')->nullable();
             $table->string('retensi')->nullable();
             $table->string('attachment')->nullable(); // File path

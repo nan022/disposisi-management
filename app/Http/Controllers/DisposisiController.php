@@ -88,7 +88,7 @@ class DisposisiController extends Controller
             'no_agenda' => 'required|string|max:255',
             'tanggal_agenda' => 'required|date',
             'jenis_agenda' => 'required|string|max:255',
-            'diketahui' => 'nullable|boolean', 
+            'diketahui' => 'nullable|boolean',
             'ditindaklanjuti' => 'nullable|boolean',
             'jadwalkan_hadir' => 'nullable|boolean',
             'catatan' => 'nullable|string',
@@ -96,6 +96,7 @@ class DisposisiController extends Controller
             'tanggal_disposisi' => 'nullable|date',
             'teams' => 'required|array',
             'teams.*' => 'exists:teams,id',
+            'bukti_disposisi' => 'nullable|file|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         // Paksa nilai 0 atau 1 untuk checkbox
@@ -103,6 +104,14 @@ class DisposisiController extends Controller
         $validated['ditindaklanjuti'] = $request->has('ditindaklanjuti') ? 1 : 0;
         $validated['jadwalkan_hadir'] = $request->has('jadwalkan_hadir') ? 1 : 0;
         $validated['status_disposisi'] = (int) $request->status_disposisi;
+
+        // Handle upload bukti disposisi
+        if ($request->hasFile('bukti_disposisi')) {
+            if ($disposisi->bukti_disposisi) {
+                Storage::disk('public')->delete($disposisi->bukti_disposisi);
+            }
+            $validated['bukti_disposisi'] = $request->file('bukti_disposisi')->store('bukti_disposisi', 'public');
+        }
 
         $disposisi->update($validated);
         $disposisi->teams()->sync($request->teams);

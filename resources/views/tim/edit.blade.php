@@ -68,13 +68,29 @@
 
                                 <div class="mt-4">
                                     <x-input-label for="status_disposisi" value="Status Disposisi *" />
-                                    
+
                                     <select id="status_disposisi" name="status_disposisi" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                                         <option value="0" {{ old('status_disposisi', $disposisi->status_disposisi) == 0 ? 'selected' : '' }}>Belum</option>
                                         <option value="1" {{ old('status_disposisi', $disposisi->status_disposisi) == 1 ? 'selected' : '' }}>Sudah</option>
                                     </select>
 
                                     <x-input-error :messages="$errors->get('status_disposisi')" class="mt-2" />
+                                </div>
+
+                                <!-- Bukti Disposisi -->
+                                <div class="mt-4">
+                                    <x-input-label value="Bukti Disposisi (Gambar)" />
+                                    @if($disposisi->bukti_disposisi)
+                                        <div class="mt-2 mb-2">
+                                            <p class="text-sm text-gray-500 mb-1">Bukti saat ini:</p>
+                                            <a href="{{ Storage::url($disposisi->bukti_disposisi) }}" target="_blank">
+                                                <img src="{{ Storage::url($disposisi->bukti_disposisi) }}" alt="Bukti Disposisi" class="max-w-xs h-auto rounded-lg border border-gray-300 dark:border-gray-600">
+                                            </a>
+                                        </div>
+                                    @endif
+                                    <input type="file" id="bukti_disposisi" name="bukti_disposisi" accept="image/jpeg,image/jpg,image/png" class="block mt-1 w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+                                    <p class="text-xs text-gray-500 mt-1">Format: JPG, PNG. Maksimal 2MB.</p>
+                                    <x-input-error :messages="$errors->get('bukti_disposisi')" class="mt-2" />
                                 </div>
                             </div>
 

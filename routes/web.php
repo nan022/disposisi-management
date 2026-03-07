@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\DisposisiController;
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\MonitorController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,16 +20,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware('role:admin')->group(function() {
         Route::resource('users', UserController::class);
         Route::resource('teams', TeamController::class);
+        Route::resource('agenda', AgendaController::class);
     });
 
     // Sekretaris Routes
     Route::middleware('role:sekretaris')->group(function() {
         Route::resource('disposisi', DisposisiController::class);
+        Route::resource('agenda', AgendaController::class);
     });
 
     // Pimpinan Routes
     Route::middleware('role:pimpinan')->group(function() {
         Route::get('/monitor', [MonitorController::class, 'index'])->name('monitor.index');
+        Route::get('/monitor/agenda', [MonitorController::class, 'agenda'])->name('monitor.agenda');
+        Route::get('/monitor/disposisi/tim/{team}', [MonitorController::class, 'disposisiByTeam'])->name('monitor.disposisi.team');
     });
 
     // Ketua Tim Routes

@@ -44,19 +44,19 @@
                                     <td class="px-6 py-4">
                                         <div class="flex flex-col gap-1 items-center">
                                             @if($disposisi->diketahui)
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">
+                                                <span class="inline-flex items-center text-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">
                                                     Diketahui
                                                 </span>
                                             @endif
 
                                             @if($disposisi->ditindaklanjuti)
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
+                                                <span class="inline-flex items-center text-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
                                                     Ditindaklanjuti
                                                 </span>
                                             @endif
 
                                             @if($disposisi->jadwalkan_hadir)
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300">
+                                                <span class="inline-flex items-center text-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300">
                                                     Jadwalkan Hadir
                                                 </span>
                                             @endif
